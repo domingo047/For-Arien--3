@@ -2,10 +2,16 @@ const questionEl = document.getElementById("question");
 const imageContainer = document.getElementById("image-container");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const finalBtn = document.getElementById("finalBtn");
+const letterEl = document.getElementById("letter");
 
 let noIndex = 0;
+let clickedYesImages = new Set();
 
-// First screen
+/* -----------------------------
+   SCREENS
+----------------------------- */
+
 const startScreen = {
   question: "Will you be my Valentine? 💘",
   images: [
@@ -14,7 +20,6 @@ const startScreen = {
   ]
 };
 
-// Screens shown when she clicks NO
 const noScreens = [
   {
     question: "Are you sure? 🥺",
@@ -39,30 +44,81 @@ const noScreens = [
   }
 ];
 
-// Screen shown when she clicks YES
 const yesScreen = {
   question: "YAY!! Happy Valentine’s Day 💕",
   images: [
-    "images/yes1.jpg",
-    "images/yes2.jpg",
-    "images/yes3.jpg"
+    {
+      src: "images/yes1.jpg",
+      caption: "This was one of my favorite days with you 🥺"
+    },
+    {
+      src: "images/yes2.jpg",
+      caption: "You look so beautiful here it actually hurts 😭"
+    },
+    {
+      src: "images/yes3.jpg",
+      caption: "I still smile every time I think about this moment 💘"
+    }
   ]
 };
 
-function renderScreen(screen) {
+/* -----------------------------
+   RENDER
+----------------------------- */
+
+function renderScreen(screen, isYes = false) {
+
   questionEl.textContent = screen.question;
   imageContainer.innerHTML = "";
 
-  screen.images.forEach(src => {
+  // reset yes-only UI
+  finalBtn.style.display = "none";
+  letterEl.style.display = "none";
+  clickedYesImages.clear();
+
+  screen.images.forEach((item, index) => {
     const img = document.createElement("img");
-    img.src = src;
     img.className = "photo";
+
+    if (isYes) {
+      img.src = item.src;
+      img.addEventListener("click", () => {
+        showCaption(img, item.caption, index, screen.images.length);
+      });
+    } else {
+      img.src = item;
+    }
+
     imageContainer.appendChild(img);
   });
 }
 
-// Initial render
-renderScreen(startScreen);
+/* -----------------------------
+   CAPTION LOGIC
+----------------------------- */
+
+function showCaption(imgEl, text, index, total) {
+
+  if (clickedYesImages.has(index)) return;
+
+  clickedYesImages.add(index);
+
+  const caption = document.createElement("div");
+  caption.className = "caption";
+  caption.textContent = text;
+
+  imgEl.after(caption);
+
+  imgEl.style.outline = "3px solid #ff5fa2";
+
+  if (clickedYesImages.size === total) {
+    finalBtn.style.display = "inline-block";
+  }
+}
+
+/* -----------------------------
+   EVENTS
+----------------------------- */
 
 noBtn.addEventListener("click", () => {
 
@@ -70,18 +126,31 @@ noBtn.addEventListener("click", () => {
     renderScreen(noScreens[noIndex]);
     noIndex++;
   } else {
-    // stay on the last "no" screen
     renderScreen(noScreens[noScreens.length - 1]);
   }
+
+  // grow YES button each time NO is clicked
+  const scale = Math.min(1 + noIndex * 0.15, 2.5);
+  yesBtn.style.transform = `scale(${scale})`;
 
 });
 
 yesBtn.addEventListener("click", () => {
 
-  renderScreen(yesScreen);
+  renderScreen(yesScreen, true);
 
-  // hide buttons after yes
   yesBtn.style.display = "none";
   noBtn.style.display = "none";
 
 });
+
+finalBtn.addEventListener("click", () => {
+  letterEl.style.display = "block";
+  finalBtn.style.display = "none";
+});
+
+/* -----------------------------
+   START
+----------------------------- */
+
+renderScreen(startScreen);
