@@ -1,34 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A website for my love :>" />
-    <title>Happy Valentine's Day!</title>
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
-    <!-- Styles: replace or add your CSS files -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <h1>Will you be my Valentine?</h1>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <title>Will you be my Valentine?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <!-- Main content -->
-    <main>
-      <section id="app">
-        <button id="yes-btn">Yes</button>
-        <button id="no-btn">No</button>
-      </section>
-    </main>
+  <div class="card">
+    <h1 id="question"></h1>
 
-    <!-- Scripts: replace or add your JS files -->
-    <script>
-      // Small helper: set current year
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-    <script src="script.js" defer></script>
-  </body>
+    <div id="image-container"></div>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 💔</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
