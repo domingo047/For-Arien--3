@@ -130,7 +130,7 @@ noBtn.addEventListener("click", () => {
   }
 
   // grow YES button each time NO is clicked
-  const scale = Math.min(1 + noIndex * 0.15, 2.5);
+  const scale = Math.min(1 + noIndex * 0.75);
   yesBtn.style.transform = `scale(${scale})`;
 
 });

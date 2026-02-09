@@ -22,7 +22,6 @@ body {
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 20px 0;
 }
 
 .photo {
@@ -67,11 +66,11 @@ button {
 /* Caption pop animation */
 
 .caption {
-  font-size: 14px;
-  margin-top: 6px;
-  color: #ff5fa2;
-  max-width: 150px;
-  animation: popIn 0.25s ease forwards;
+    font-size: 14px;
+    margin-top: 6px;
+    color: #ff5fa2;
+    max-width: 150px;
+    animation: popIn 0.25s ease forwards;
 }
 
 @keyframes popIn {
