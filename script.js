@@ -15,8 +15,8 @@ let clickedYesImages = new Set();
 const startScreen = {
   question: "Will you be my Valentine?",
   images: [
-    "images/start1.jpg",
-    "images/start2.jpg"
+    "images/start1.png",
+    "images/start2.png"
   ]
 };
 
@@ -24,17 +24,17 @@ const noScreens = [
   {
     question: "I think you made a mistake let's try again. Will you be my Valentine?",
     images: [
-      "images/no1_1.jpg"
+      "images/no1_1.png"
     ]
   },
   {
-    question: "All you have to do is click the yes button... Will you be my Valentine? :<",
+    question: "Are you sure? I thought you loved me. Please say yes :<<",
     images: [
       "images/no2_1.jpg"
     ]
   },
   {
-    question: "I'll make this easier for you since you keep pressing the wrong one. There is only one button left. Will you be my Valentine? Please :<<",
+    question: "I'll make this easier for you since you keep pressing the wrong one. There is only one button left. Please do it for him. Will you please be my Valentine? Please :<<",
     images: [
       "images/no3_1.jpg"
     ]
@@ -46,15 +46,15 @@ const yesScreen = {
   images: [
     {
       src: "images/yes1.jpg",
-      caption: ""
+      caption: "When I saw you in that dress I thought you to myself how absolutely beautiful you looked. It really dawned me how lucky I am to have someone like you in my life."
     },
     {
       src: "images/yes2.jpeg",
-      caption: ""
+      caption: "First of this is probably my favorite photo of us. I haven't looked this genuinely happy in so long and I didn't think it was even possible. You really are the best part of my life. "
     },
     {
       src: "images/yes3.jpg",
-      caption: ""
+      caption: "I remember how scared I was when you asked to do this. Even though I actually didn't want to do it, but I trusted you and I am really glad I did because I had so much fun doing this."
     }
   ]
 };
