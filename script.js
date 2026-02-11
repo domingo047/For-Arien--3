@@ -13,7 +13,7 @@ let clickedYesImages = new Set();
 ----------------------------- */
 
 const startScreen = {
-  question: "Will you be my Valentine? 💘",
+  question: "Will you be my Valentine?",
   images: [
     "images/start1.jpg",
     "images/start2.jpg"
@@ -22,42 +22,39 @@ const startScreen = {
 
 const noScreens = [
   {
-    question: "Are you sure? 🥺",
+    question: "I think you made a mistake let's try again. Will you be my Valentine?",
     images: [
-      "images/no1_1.jpg",
-      "images/no1_2.jpg"
+      "images/no1_1.jpg"
     ]
   },
   {
-    question: "Pleaseee be my Valentine 💔",
+    question: "All you have to do is click the yes button... Will you be my Valentine? :<",
     images: [
-      "images/no2_1.jpg",
-      "images/no2_2.jpg"
+      "images/no2_1.jpg"
     ]
   },
   {
-    question: "Last chance… will you be my Valentine? 😭",
+    question: "I'll make this easier for you since you keep pressing the wrong one. There is only one button left. Will you be my Valentine? Please :<<",
     images: [
-      "images/no3_1.jpg",
-      "images/no3_2.jpg"
+      "images/no3_1.jpg"
     ]
   }
 ];
 
 const yesScreen = {
-  question: "YAY!! Happy Valentine’s Day 💕",
+  question: "YAY!! Happy Valentine’s Day Arien!!! (click on the images for a surprise)",
   images: [
     {
       src: "images/yes1.jpg",
-      caption: "This was one of my favorite days with you 🥺"
+      caption: ""
     },
     {
-      src: "images/yes2.jpg",
-      caption: "You look so beautiful here it actually hurts 😭"
+      src: "images/yes2.jpeg",
+      caption: ""
     },
     {
       src: "images/yes3.jpg",
-      caption: "I still smile every time I think about this moment 💘"
+      caption: ""
     }
   ]
 };
@@ -130,7 +127,7 @@ noBtn.addEventListener("click", () => {
   }
 
   // grow YES button each time NO is clicked
-  const scale = Math.min(1 + noIndex * 0.75);
+  const scale = Math.min(1 + noIndex * 1);
   yesBtn.style.transform = `scale(${scale})`;
 
 });
